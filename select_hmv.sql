@@ -119,7 +119,7 @@ SELECT
     ,hv_MERKMALE
 	,LENGTH(hv_MERKMALE) AS ZEICHEN
 
-    FROM frommerdb.hmvgkv AS gkv
+    FROM hmvdb.hmvgkv AS gkv
 
 -- 	WHERE CONCAT(hv_GRUPPE,".",LPAD(hv_ORT,2,'0'),".",LPAD(hv_UNTERGRUPPE,2,'0'),".",hv_ART,LPAD(hv_PRODUKT,3,'0'))
 -- 	  = '13.20.10.0322'	
@@ -138,5 +138,4 @@ SELECT
     AND hv_BEZEICHNUNG LIKE '%cellion%'  
 
 --  ORDER BY hv_AUFNAHMEDATUM DESC
---  ORDER BY siv.sachnummer
         ;
