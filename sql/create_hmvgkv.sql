@@ -1,3 +1,4 @@
+CREATE DATABASE IF NOT EXISTS hmvdb CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE hmvdb;
 
 /*
@@ -21,15 +22,15 @@ CREATE TABLE hmvgkv (
 	hv_ART TINYINT, -- 0-9
 	hv_PRODUKT SMALLINT, -- 000-999 (lfd)
 	hv_BEZEICHNUNG text, -- Model
-	hv_HERSTELLER text, -- Vendor
+	hv_HERSTELLER tinytext, -- Vendor
 	hv_MERKMALE text, -- Description
 	hv_AUFNAHMEDATUM date,
 	hv_AENDERUNGSDATUM date,
 	created TIMESTAMP
 	);
     
-LOAD XML LOCAL INFILE '%USERPROFILE%\\project\\source\\gkv\\20180302_HMV\\20180323_HMV_2.xml'
+LOAD XML LOCAL INFILE 'C:\\project\\source\\gkv\\20180302_HMV\\20180323_HMV_2.xml'
 	INTO TABLE hmvdb.hmvgkv
-	CHARACTER SET UTF8
+	CHARACTER SET utf8mb4
 	ROWS IDENTIFIED BY '<hv_HMV_PRODUKT>'
 	;
