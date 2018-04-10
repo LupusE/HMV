@@ -29,6 +29,8 @@ SELECT DISTINCT
 ***/
     ,CASE WHEN (TRIM(SUBSTRING_INDEX(SUBSTRING_INDEX(hv_MERKMALE,'Verstärkung:',-1),'&#xd;',1))) <> TRIM(SUBSTRING_INDEX(hv_MERKMALE,'&#xd;',1)) 
           THEN (TRIM(SUBSTRING_INDEX((SUBSTRING_INDEX(SUBSTRING_INDEX(hv_MERKMALE,'Verstärkung:',-1),'&#xd;',1)),'dB',1)))
+          WHEN (TRIM(SUBSTRING_INDEX(SUBSTRING_INDEX(hv_MERKMALE,'bei 1,6 kHz:',-1),'&#xd;',1))) <> TRIM(SUBSTRING_INDEX(hv_MERKMALE,'&#xd;',1)) 
+          THEN (TRIM(SUBSTRING_INDEX(SUBSTRING_INDEX((SUBSTRING_INDEX(SUBSTRING_INDEX(hv_MERKMALE,'bei 1,6 kHz:',-1),'&#xd;',1)),'bei',-1),'dB',1)))
           ELSE NULL END AS V_dB
     ,CASE WHEN (TRIM(SUBSTRING_INDEX(SUBSTRING_INDEX(hv_MERKMALE,'Verstärkung:',-1),'&#xd;',1))) <> TRIM(SUBSTRING_INDEX(hv_MERKMALE,'&#xd;',1)) 
           THEN (TRIM(SUBSTRING_INDEX(SUBSTRING_INDEX((SUBSTRING_INDEX(SUBSTRING_INDEX(hv_MERKMALE,'Verstärkung:',-1),'&#xd;',1)),'bei',-1),'kHz',1)))
@@ -73,6 +75,8 @@ SELECT DISTINCT
           ELSE NULL END AS rk_mgmt 
     ,CASE WHEN (TRIM(SUBSTRING_INDEX(SUBSTRING_INDEX(hv_MERKMALE,'Batterietyp:',-1),'&#xd;',1))) <> TRIM(SUBSTRING_INDEX(hv_MERKMALE,'&#xd;',1))
           THEN (TRIM(SUBSTRING_INDEX(SUBSTRING_INDEX(hv_MERKMALE,'Batterietyp:',-1),'&#xd;',1)))
+          WHEN (TRIM(SUBSTRING_INDEX(SUBSTRING_INDEX(hv_MERKMALE,'Energiequelle:',-1),'&#xd;',1))) <> TRIM(SUBSTRING_INDEX(hv_MERKMALE,'&#xd;',1))
+          THEN (TRIM(SUBSTRING_INDEX(SUBSTRING_INDEX(hv_MERKMALE,'Energiequelle:',-1),'&#xd;',1)))
           ELSE NULL END AS batt
     ,CASE WHEN (TRIM(SUBSTRING_INDEX(SUBSTRING_INDEX(hv_MERKMALE,'Telefonspule:',-1),'&#xd;',1))) <> TRIM(SUBSTRING_INDEX(hv_MERKMALE,'&#xd;',1))  
           THEN (TRIM(SUBSTRING_INDEX(SUBSTRING_INDEX(hv_MERKMALE,'Telefonspule:',-1),'&#xd;',1)))
@@ -84,6 +88,8 @@ SELECT DISTINCT
           ELSE NULL END AS DAI
     ,CASE WHEN (TRIM(SUBSTRING_INDEX(SUBSTRING_INDEX(hv_MERKMALE,'Fernbedienung optional:',-1),'&#xd;',1))) <> TRIM(SUBSTRING_INDEX(hv_MERKMALE,'&#xd;',1)) 
           THEN (TRIM(SUBSTRING_INDEX(SUBSTRING_INDEX(hv_MERKMALE,'Fernbedienung optional:',-1),'&#xd;',1)))
+          WHEN (TRIM(SUBSTRING_INDEX(SUBSTRING_INDEX(hv_MERKMALE,'fernbedienbar:',-1),'&#xd;',1))) <> TRIM(SUBSTRING_INDEX(hv_MERKMALE,'&#xd;',1)) 
+          THEN (TRIM(SUBSTRING_INDEX(SUBSTRING_INDEX(hv_MERKMALE,'fernbedienbar:',-1),'&#xd;',1)))
           ELSE NULL END AS remote
     ,CASE WHEN (TRIM(SUBSTRING_INDEX(SUBSTRING_INDEX(hv_MERKMALE,'Wireless:',-1),'&#xd;',1))) <> TRIM(SUBSTRING_INDEX(hv_MERKMALE,'&#xd;',1)) 
           THEN (TRIM(SUBSTRING_INDEX(SUBSTRING_INDEX(hv_MERKMALE,'Wireless:',-1),'&#xd;',1)))
@@ -127,8 +133,10 @@ SELECT DISTINCT
 	/* Zubehör/Übertragungsanlagen */
 -- 	WHERE hv_GRUPPE = '13' AND hv_ORT = '99' AND hv_UNTERGRUPPE IN ('03')
 
-     AND hv_BEZEICHNUNG LIKE '%CROS%'
---   AND hv_HERSTELLER LIKE 'Sivantos GmbH'  
+-- AND hv_BEZEICHNUNG LIKE '%CROS%'
+--   AND hv_HERSTELLER LIKE 'SONOVA%'
+   AND hv_BEZEICHNUNG LIKE '%audeo%dir%'
+--   AND (TRIM(SUBSTRING_INDEX(SUBSTRING_INDEX(hv_MERKMALE,'Batterietyp:',-1),'&#xd;',1))) LIKE '%ZL 12%' 
 
 --  ORDER BY hv_AUFNAHMEDATUM DESC
-        ;
+;
