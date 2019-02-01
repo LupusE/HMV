@@ -133,10 +133,10 @@ SELECT DISTINCT
 	/* Zubehör/Übertragungsanlagen */
 -- 	WHERE hv_GRUPPE = '13' AND hv_ORT = '99' AND hv_UNTERGRUPPE IN ('03')
 
--- AND hv_BEZEICHNUNG LIKE '%CROS%'
+ AND hv_BEZEICHNUNG LIKE '%EY277%'
 --   AND hv_HERSTELLER LIKE 'SONOVA%'
-   AND hv_BEZEICHNUNG LIKE '%audeo%dir%'
---   AND (TRIM(SUBSTRING_INDEX(SUBSTRING_INDEX(hv_MERKMALE,'Batterietyp:',-1),'&#xd;',1))) LIKE '%ZL 12%' 
+--   AND (TRIM(SUBSTRING_INDEX(SUBSTRING_INDEX(hv_MERKMALE,'Batterietyp:',-1),'&#xd;',1))) LIKE '%ZL 12%'
+-- 	AND INSTR(SUBSTRING_INDEX(hv_MERKMALE,'Gerät baugleich mit:',-1), '&#xd;\n') >='50'
 
 --  ORDER BY hv_AUFNAHMEDATUM DESC
 ;

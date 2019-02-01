@@ -3,7 +3,7 @@ USE hmvdb;
 
 /*
 -- Format of (YYYYMMDD_HMV.xml):
--- <hv:GRUPPE>13</hv:GRUPPE>
+-- <hv:GRUPPE>13</hv:GRUPPE> 
 --        <hv:ORT>20</hv:ORT>
 --        <hv:UNTERGRUPPE>3</hv:UNTERGRUPPE>
 --        <hv:ART>5</hv:ART>
@@ -29,7 +29,7 @@ CREATE TABLE hmvgkv (
 	created TIMESTAMP
 	);
     
-LOAD XML LOCAL INFILE 'C:\\project\\source\\gkv\\20180302_HMV\\20180323_HMV_2.xml'
+LOAD XML LOCAL INFILE 'C:\\project\\source\\gkv\\20180913_HMV.xml'
 	INTO TABLE hmvdb.hmvgkv
 	CHARACTER SET utf8mb4
 	ROWS IDENTIFIED BY '<hv_HMV_PRODUKT>'
